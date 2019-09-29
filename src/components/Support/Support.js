@@ -1,22 +1,60 @@
 import React, { Component } from 'react';
-import { HashRouter as Router, Route, Link } from 'react-router-dom';
-
-import Comments from '../Comments/Comments';
+import { connect } from 'react-redux';
 
 class Support extends Component {
+
+  state = {
+    support: []
+  }
+
+  // capture support rating from 1-5
+  supportChange = (event, propertyName) => {
+      this.setState({
+          support: event.target.value
+      })
+  } // end supportChange  
+
+  // send feelings rating to feedbackReducer
+  handleNext = (event) => {
+      event.preventDefault();
+      this.props.dispatch({
+          type: 'ADD_SUPPORT',
+          payload: this.state.support
+      })
+      this.props.history.push('/comments')
+  } // end handleNext
+
+  handleBack = () => {
+    this.props.history.push('/understanding');
+  }
+
     render() {
         return (
           <div className="SupportDiv">
-            <h2>HELLO FROM Support Me</h2>
             <div>
-                <Router>
+              <div>
+                <h2>How well are you being supported?</h2>
+                  <form>
+                    <input onChange={(event) => {this.supportChange(event, 'support')}} type="number" className="inputNumberFeeling" min="1" max="5"></input>
+                    <br />
+                    <button onClick={this.handleBack} type="button">Back</button>
+                    <button onClick={this.handleNext} >Next</button>
+                  </form>
+              </div>
+                {/* <Router>
                     <Link to="/comments"><button>Next</button></Link>
                     <Route exact path="/comments" component={Comments} />
-                </Router>
+                </Router> */}
             </div>
           </div>
         );
       }
     }
+
+    // export the feedbackReduxState via connect
+    const feedbackReduxState = (reduxState) => ({
+      reduxState
+    })
+      
     
-    export default Support;
+    export default connect(feedbackReduxState) (Support);
