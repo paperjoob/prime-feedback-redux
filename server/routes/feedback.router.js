@@ -4,7 +4,7 @@ const pool = require('../modules/pool');
 
 router.get('/', (req, res) => {
     console.log('in GET /api/feedback')
-    pool.query('SELECT * from "feedback";').then((result) => {
+    pool.query('SELECT * from "feedback" ORDER BY "id" desc;').then((result) => {
         res.send(result.rows);
     }).catch((error) => {
         console.log('Error GET /api/feedback', error)
@@ -24,6 +24,5 @@ router.post('/', (req, res) => {
         res.sendStatus(500);
     });
 })
-
 
 module.exports = router;

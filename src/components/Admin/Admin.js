@@ -29,7 +29,12 @@ class Admin extends Component {
   render() {
 
     const displayFeed = this.state.feedback.map((feed, i) => {
-        return <tr key={i}><td>{feed.feeling}</td><td> {feed.understanding}</td><td>{feed.support}</td><td>{feed.comments}</td><td><button>Delete</button></td></tr>
+        return <tr key={i}><td>{feed.feeling}</td>
+        <td> {feed.understanding}</td>
+        <td>{feed.support}</td>
+        <td>{feed.comments}</td>
+        <td><button>Delete</button></td>
+        </tr>
     })
       
     return (

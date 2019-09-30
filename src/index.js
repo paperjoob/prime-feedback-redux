@@ -36,18 +36,9 @@ const feedbackReducer = (state = feedback, action) => {
     }
 }
 
-const feedbackList = (state = [], action) => {
-    // TODO - grab feedback list with data from server
-    if (action.type === 'GRAB_FEEDBACK') {
-      return action.payload; // use spread operator if you would like to keep the state and add on top of it
-    } // with no spread operator, just update the page as is
-    return state;
-  }
-
 const storeInstance = createStore(
     combineReducers({
         feedbackReducer,
-        feedbackList
     }), 
     applyMiddleware(logger)   
 );
