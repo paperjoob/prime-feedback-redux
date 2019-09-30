@@ -10,6 +10,10 @@ class ReviewPage extends Component {
     Axios.post('/api/feedback', this.props.reduxState.feedbackReducer)
     .then( (response) => {
       console.log(response.data);
+      this.props.dispatch({
+        type: 'CLEAR',
+        action: {}
+      })
     })
     .catch( (error) => {
       console.log('ERROR IN POST', error);
@@ -19,10 +23,6 @@ class ReviewPage extends Component {
   // when submit button is clicked, run handlepost and move onto the Thank You page
   handleSubmit = () => {
     this.handlePost();
-    this.props.dispatch({
-      type: 'CLEAR',
-      action: {}
-    })
     this.props.history.push('/thankyou');
   }
 
