@@ -17,12 +17,10 @@ class Admin extends Component {
               type: 'GRAB_FEEDBACK',
               payload: response.data
             })
-            console.log(this.state.feedback)
           }).catch( (error) => {
             console.log('error in GET', error);
           })
     }
-
 
   render() {
       
