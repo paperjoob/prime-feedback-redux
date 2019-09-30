@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Axios from 'axios';
 import { connect } from 'react-redux';
 import './Admin.css';
+import AdminList from '../AdminList/AdminList';
 
 class Admin extends Component {
 
@@ -54,8 +55,8 @@ class Admin extends Component {
                     </tr>
                         {displayFeed}
                 </tbody>
-                
             </table>
+            {/* <AdminList getFeedback={this.getFeedback}/> */}
         </div>
       </div>
     );
