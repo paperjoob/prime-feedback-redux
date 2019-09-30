@@ -29,7 +29,6 @@ understandingChange = (event) => {
     this.setState({
         understanding: event.target.value
     })
-    console.log(event.target.value)
 } // end understandingChange  
 
 // send feelings rating to feedbackReducer
