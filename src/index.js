@@ -32,7 +32,7 @@ const feedbackReducer = (state = feedback, action) => {
             state.comments = action.payload;
             return state;
         case 'CLEAR':
-            state = [];
+            state = {};
             return state;
         default:
             return state;
