@@ -41,7 +41,7 @@ class Support extends Component {
                     <input onChange={(event) => {this.supportChange(event, 'support')}} type="number" className="inputNumberFeeling" min="1" max="5"></input>
                     <br />
                     <button onClick={this.handleBack} type="button">Back</button>
-                    <button onClick={this.handleNext} >Next</button>
+                    <button onClick={this.handleNext} type="button">Next</button>
                   </form>
               </div>
             </div>
