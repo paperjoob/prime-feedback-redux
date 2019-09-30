@@ -25,7 +25,7 @@ const theme = createMuiTheme({
 class Feeling extends Component {
 
     state = {
-        feeling: []
+        feeling: ''
     }
 
     // capture feelings rating from 1-5
@@ -37,14 +37,16 @@ class Feeling extends Component {
     } // end feelingChange  
 
     // send feelings rating to feedbackReducer
-    handleNext = (event) => {
-        event.preventDefault();
-        console.log('hi from handleNext');
-        this.props.dispatch({
-            type: 'ADD_FEELINGS',
-            payload: this.state.feeling
-        })
-        this.props.history.push('/understanding');
+    handleNext = () => {
+        if (this.state.feeling === '') {
+            return alert('Please select a number from 1-5');
+        } else {
+            this.props.dispatch({
+                type: 'ADD_FEELINGS',
+                payload: this.state.feeling
+            })
+            this.props.history.push('/understanding');
+        }
     } // end handleNext
 
     render() {
@@ -56,7 +58,7 @@ class Feeling extends Component {
                 <div>
                     <p>Choose a number from 1-5 depending on how you are feeling today.</p>
                     <p>5 is feeling great. 1 is 'could be better'.</p>
-                    <InputText feelingChange = {this.feelingChange}/>
+                    <InputText feelingChange = {this.feelingChange} />
                     <br />
                     <NextButton handleNext = {this.handleNext} copy="Next"/>
                 </div>

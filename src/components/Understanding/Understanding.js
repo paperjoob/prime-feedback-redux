@@ -21,7 +21,7 @@ const theme = createMuiTheme({
 class Understanding extends Component {
 
   state = {
-    understanding: []
+    understanding: ''
 }
 
 // capture understanding rating from 1-5
@@ -32,13 +32,16 @@ understandingChange = (event) => {
 } // end understandingChange  
 
 // send feelings rating to feedbackReducer
-handleNext = (event) => {
-    event.preventDefault();
+handleNext = () => {
+  if (this.state.understanding === '') {
+      return alert('Please select a number from 1-5');
+  } else {
     this.props.dispatch({
-        type: 'ADD_UNDERSTANDING',
-        payload: this.state.understanding
-    })
-    this.props.history.push('/support');
+      type: 'ADD_UNDERSTANDING',
+      payload: this.state.understanding
+  })
+  this.props.history.push('/support');
+  } 
 } // end handleNext
 
 handleBack = () => {

@@ -4,24 +4,27 @@ import { connect } from 'react-redux';
 class Support extends Component {
 
   state = {
-    support: []
+    support: ''
   }
 
   // capture support rating from 1-5
-  supportChange = (event, propertyName) => {
+  supportChange = (event) => {
       this.setState({
           support: event.target.value
       })
   } // end supportChange  
 
   // send feelings rating to feedbackReducer
-  handleNext = (event) => {
-      event.preventDefault();
+  handleNext = () => {
+    if (this.state.support === '') {
+      return alert('Please select a number from 1-5');
+    } else {
       this.props.dispatch({
           type: 'ADD_SUPPORT',
           payload: this.state.support
       })
       this.props.history.push('/comments')
+    }
   } // end handleNext
 
   handleBack = () => {
@@ -41,10 +44,6 @@ class Support extends Component {
                     <button onClick={this.handleNext} >Next</button>
                   </form>
               </div>
-                {/* <Router>
-                    <Link to="/comments"><button>Next</button></Link>
-                    <Route exact path="/comments" component={Comments} />
-                </Router> */}
             </div>
           </div>
         );
