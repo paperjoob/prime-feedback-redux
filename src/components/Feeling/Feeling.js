@@ -4,10 +4,8 @@ import { connect } from 'react-redux';
 import InputText from '../elements/InputText';
 import MuiThemeProvider from '@material-ui/core/styles/MuiThemeProvider';
 import { createMuiTheme } from '@material-ui/core/styles';
-import Typography from '@material-ui/core/Typography';
 import red from '@material-ui/core/colors/red';
-import purple from '@material-ui/core/colors/purple';
-import blue from '@material-ui/core/colors/blue';
+import NextButton from '../elements/NextButton';
 
 const theme = createMuiTheme({
     palette: {
@@ -57,12 +55,10 @@ class Feeling extends Component {
                 <h2>How are you feeling today?</h2>
                 <div>
                     <p>Choose a number from 1-5 depending on how you are feeling today.</p>
-                    <p>5 is feeling great, and 1 is 'I could be better'.</p>
-                    <form>
-                        {/* <input onChange={(event) => {this.feelingChange(event, 'feeling')}} type="number" placeholder='I am feeling...' className="inputNumberFeeling" min="1" max="5"></input> */}
-                        <InputText feelingChange = {this.feelingChange}/>
-                        <button onClick={this.handleNext} >Next</button>
-                    </form>
+                    <p>5 is feeling great. 1 is 'could be better'.</p>
+                    <InputText feelingChange = {this.feelingChange}/>
+                    <br />
+                    <NextButton handleNext = {this.handleNext} copy="Next"/>
                 </div>
             </div>
         </MuiThemeProvider>
